@@ -33,6 +33,6 @@ feature "Post::CreatePost" do
   scenario 'New Post Unavailable for Non-Logged-User' do
     visit new_post_path
     page.wont_have_content 'New Post'
-    page.must_have_content 'The number you have dialed, 555-555-5555 is not available at this time.'
+    page.must_have_content 'You need to sign in or sign up before continuing.'
   end
 end
