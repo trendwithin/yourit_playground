@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user! unless [:index]
+  before_action :authenticate_user!, only: [:create, :destroy, :edit, :new]
   after_action :verify_authorized
   def index
     @posts = Post.all
@@ -7,12 +7,14 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    # @post = Post.new
+    @post = current_user.posts.build
     authorize @post
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
+    p @post
     authorize @post
     respond_to do |format|
       if @post.save
