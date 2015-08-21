@@ -27,4 +27,12 @@ class PostsControllerTest < ActionController::TestCase
       delete :destroy, id: @post
     end
   end
+
+  def test_user_cant_update_another_users_post
+    sign_out @user
+    @shane = users(:shane)
+    sign_in @shane
+    patch :update, id: @post, post: { title: 'Hello', body: 'World' }
+    assert_response :redirect
+  end
 end
