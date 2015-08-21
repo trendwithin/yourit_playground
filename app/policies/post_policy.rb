@@ -10,7 +10,14 @@ class PostPolicy < ApplicationPolicy
   def destroy?
     user.present? && user == post.user
   end
-  
+
+  def edit?
+    user.present? && user == post.user
+  end
+  def update?
+    user.present? && user == post.user
+  end
+
   private
   def post
     record
