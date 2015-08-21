@@ -7,14 +7,12 @@ class PostsController < ApplicationController
   end
 
   def new
-    # @post = Post.new
     @post = current_user.posts.build
     authorize @post
   end
 
   def create
     @post = current_user.posts.build(post_params)
-    p @post
     authorize @post
     respond_to do |format|
       if @post.save
@@ -28,6 +26,16 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     authorize @post
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    authorize @post
+    @post.destroy
+
+    respond_to do |format|
+      format.html { redirect_to @post, notice: 'Post was successfully deleted.' }
+    end
   end
 
   private
