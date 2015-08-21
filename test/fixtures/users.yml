@@ -8,5 +8,10 @@
 vic:
   email: vic@theshield.net
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+
+shane:
+  email: shane@theshield.net
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %> 
+
 # column: value
 #
