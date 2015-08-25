@@ -3,7 +3,7 @@ require "test_helper"
 class TaggingTest < ActiveSupport::TestCase
 
   def tagging
-    @tagging ||= Tagging.new
+    @tagging ||= taggings(:two)
   end
 
   def test_valid

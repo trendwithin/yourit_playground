@@ -3,7 +3,7 @@ require "test_helper"
 class TagTest < ActiveSupport::TestCase
 
   def tag
-    @tag ||= Tag.new
+    @tag ||= tags(:one)
   end
 
   def test_valid
