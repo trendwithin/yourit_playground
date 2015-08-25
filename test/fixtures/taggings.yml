@@ -2,9 +2,10 @@
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  tag: 
-  post: 
+  tag: one
+  post: one
 
+#
 two:
-  tag: 
-  post: 
+  tag: two
+  post: one
