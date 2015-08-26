@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   scope :it, -> (p){ joins(:tags).where(tags: {id: p.id}).count }
 
   def self.tagged_with(name)
-    Tag.find_by_name!(name).articles
+    Tag.find_by_name!(name).posts
   end
 
   # def self.tag_counts
