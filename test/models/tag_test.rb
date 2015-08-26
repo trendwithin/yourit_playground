@@ -9,5 +9,5 @@ class TagTest < ActiveSupport::TestCase
   def test_valid
     assert tag.valid?
   end
-
+  
 end
