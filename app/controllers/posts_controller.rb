@@ -3,8 +3,15 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy, :edit, :new, :update]
   after_action :verify_authorized
   def index
-    @posts = Post.all
-    authorize @posts
+    # @posts = Post.all
+    # authorize @posts
+    if params[:tag]
+      @posts = Post.tagged_with(params[:tag])
+      authorize @posts
+    else
+      @posts = Post.all
+      authorize @posts
+    end
   end
 
   def new
@@ -54,6 +61,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :body)
+      params.require(:post).permit(:title, :body, :tag_list)
     end
 end
