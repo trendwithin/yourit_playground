@@ -6,6 +6,8 @@ class Post < ActiveRecord::Base
   validates :title, presence: true
   validates :body, presence: true
   scope :it, -> (p){ joins(:tags).where(tags: {id: p.id}).count }
+  scope :tag_roll, -> (u) { joins(:tags).where(tags: {id: u.tags.pluck(&:id).flatten})}
+    scope :related_users, -> (u) {joins(:user).where.not(users: { id: u})}
 
   def self.tagged_with(name)
     Tag.find_by_name!(name).posts
