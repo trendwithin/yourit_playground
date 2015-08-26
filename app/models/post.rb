@@ -5,4 +5,8 @@ class Post < ActiveRecord::Base
 
   validates :title, presence: true
   validates :body, presence: true
+
+  def tag_list
+    tags.map(&:name).join(", ")
+  end
 end
