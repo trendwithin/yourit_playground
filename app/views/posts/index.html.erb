@@ -10,6 +10,10 @@
       <div class="panel-body">
         <%= post.body %>
       </div>
+      <div class="tags">
+        <b>Tags:</b><br>
+        <%= raw post.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
+      </div>
       <div class="panel-links">
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) if policy(post).edit? %></td>
